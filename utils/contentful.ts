@@ -73,13 +73,192 @@ export type HeroSectionSkeleton = {
 
 export type HeroSectionEntry = Entry<HeroSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
 
+export type AboutMeSectionSkeleton = {
+  contentTypeId: 'aboutMeSection'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    body: EntryFieldTypes.Text
+    bulletList: EntryFieldTypes.Array<EntryFieldTypes.Symbol>
+    image: EntryFieldTypes.AssetLink
+  }
+}
+
+export type AboutMeSectionEntry = Entry<AboutMeSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+
+export type StepSkeleton = {
+  contentTypeId: 'step'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    description: EntryFieldTypes.Symbol
+  }
+}
+
+export type StepsSectionSkeleton = {
+  contentTypeId: 'stepsSection'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    description: EntryFieldTypes.Symbol
+    steps: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<StepSkeleton>>
+    cta: EntryFieldTypes.EntryLink<ButtonSkeleton>
+  }
+}
+
+export type StepsSectionEntry = Entry<StepsSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+
+export type CaseSkeleton = {
+  contentTypeId: 'case'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    body: EntryFieldTypes.Text
+    tags: EntryFieldTypes.Array<EntryFieldTypes.Symbol>
+    cta: EntryFieldTypes.EntryLink<ButtonSkeleton>
+  }
+}
+
+export type CasesSectionSkeleton = {
+  contentTypeId: 'casesSection'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    description: EntryFieldTypes.Symbol
+    cases: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<CaseSkeleton>>
+  }
+}
+
+export type CasesSectionEntry = Entry<CasesSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+
+export type PriceSkeleton = {
+  contentTypeId: 'prices'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    description: EntryFieldTypes.Symbol
+    bulletList: EntryFieldTypes.Array<EntryFieldTypes.Symbol>
+    price: EntryFieldTypes.Symbol
+    cta: EntryFieldTypes.EntryLink<ButtonSkeleton>
+    image: EntryFieldTypes.AssetLink
+  }
+}
+
+export type PricesSectionSkeleton = {
+  contentTypeId: 'pricesSection'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    description: EntryFieldTypes.Symbol
+    prices: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<PriceSkeleton>>
+  }
+}
+
+export type PricesSectionEntry = Entry<PricesSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+
+export type TestimonialSkeleton = {
+  contentTypeId: 'testimonial'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    quote: EntryFieldTypes.Symbol
+    avatar: EntryFieldTypes.AssetLink
+    name: EntryFieldTypes.Symbol
+    description: EntryFieldTypes.Symbol
+  }
+}
+
+export type TestimonialsSectionSkeleton = {
+  contentTypeId: 'testimonialsSection'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    description: EntryFieldTypes.Symbol
+    testimonials: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TestimonialSkeleton>>
+    background: EntryFieldTypes.AssetLink
+  }
+}
+
+export type TestimonialsSectionEntry = Entry<TestimonialsSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+
+export type DocumentsSectionSkeleton = {
+  contentTypeId: 'documentsSection'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    description: EntryFieldTypes.Symbol
+    documents: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>
+    cta: EntryFieldTypes.EntryLink<ButtonSkeleton>
+  }
+}
+
+export type DocumentsSectionEntry = Entry<DocumentsSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+
+export type FaqItemSkeleton = {
+  contentTypeId: 'faQItem'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    question: EntryFieldTypes.Symbol
+    answer: EntryFieldTypes.Symbol
+  }
+}
+
+export type FaqSectionSkeleton = {
+  contentTypeId: 'faQSection'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    faQs: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<FaqItemSkeleton>>
+  }
+}
+
+export type FaqSectionEntry = Entry<FaqSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+
+export type InputSkeleton = {
+  contentTypeId: 'input'
+  fields: {
+    placeholder: EntryFieldTypes.Symbol
+  }
+}
+
+export type CtaSectionSkeleton = {
+  contentTypeId: 'ctaSection'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    description: EntryFieldTypes.Symbol
+    input: EntryFieldTypes.EntryLink<InputSkeleton>
+    button: EntryFieldTypes.EntryLink<ButtonSkeleton>
+    background: EntryFieldTypes.AssetLink
+  }
+}
+
+export type CtaSectionEntry = Entry<CtaSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+
+export type FooterItemSkeleton = {
+  contentTypeId: 'footerItem'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    texts: EntryFieldTypes.Array<EntryFieldTypes.Symbol>
+  }
+}
+
+export type FooterSkeleton = {
+  contentTypeId: 'footer'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    texts: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<FooterItemSkeleton>>
+  }
+}
+
+export type FooterEntry = Entry<FooterSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+
 export type PageSkeleton = {
   contentTypeId: 'page'
   fields: {
     internalName: EntryFieldTypes.Symbol
     slug: EntryFieldTypes.Symbol
     sections: EntryFieldTypes.Array<
-      EntryFieldTypes.EntryLink<HeaderSkeleton | HeroSectionSkeleton>
+      EntryFieldTypes.EntryLink<HeaderSkeleton | HeroSectionSkeleton | AboutMeSectionSkeleton | StepsSectionSkeleton | CasesSectionSkeleton | PricesSectionSkeleton | TestimonialsSectionSkeleton | DocumentsSectionSkeleton | FaqSectionSkeleton | CtaSectionSkeleton | FooterSkeleton>
     >
   }
 }
