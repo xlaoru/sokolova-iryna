@@ -1,9 +1,9 @@
 import type { FaqSectionEntry } from "@/utils/contentful";
 
 export default function Faq({ entry }: { entry: FaqSectionEntry }) {
-    const { title, faQs } = entry.fields
+    const { title, faQs, slug } = entry.fields
     return (
-        <section id="faq">
+        <section id={slug}>
             <h2>{title}</h2>
             <div>
                 {faQs.filter((f) => f !== undefined).map((item, index) => (

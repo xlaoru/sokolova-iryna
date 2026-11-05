@@ -1,9 +1,9 @@
 import type { DocumentsSectionEntry } from "@/utils/contentful";
 
 export default function Documents({ entry }: { entry: DocumentsSectionEntry }) {
-    const { title, description, documents, cta } = entry.fields
+    const { title, description, documents, cta, slug } = entry.fields
     return (
-        <section id="documents">
+        <section id={slug}>
             <h2>{title}</h2>
             {description && <p>{description}</p>}
             <ul>

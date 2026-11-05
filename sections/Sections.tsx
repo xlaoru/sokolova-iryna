@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Hero from "@/sections/Hero";
+import Facts from "@/sections/Facts";
 import About from "@/sections/About";
 import Steps from "@/sections/Steps";
 import Cases from "@/sections/Cases";
@@ -9,7 +10,7 @@ import Documents from "@/sections/Documents";
 import Faq from "@/sections/Faq";
 import Cta from "@/sections/Cta";
 import Footer from "@/components/Footer";
-import type { AboutMeSectionEntry, CasesSectionEntry, CtaSectionEntry, DocumentsSectionEntry, FaqSectionEntry, FooterEntry, HeaderEntry, HeroSectionEntry, PageSkeleton, PricesSectionEntry, StepsSectionEntry, TestimonialsSectionEntry } from "@/utils/contentful";
+import type { AboutMeSectionEntry, FactsSectionEntry, CasesSectionEntry, CtaSectionEntry, DocumentsSectionEntry, FaqSectionEntry, FooterEntry, HeaderEntry, HeroSectionEntry, PageSkeleton, PricesSectionEntry, StepsSectionEntry, TestimonialsSectionEntry } from "@/utils/contentful";
 import type { Entry } from "contentful";
 
 type Page = Entry<PageSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
@@ -23,6 +24,8 @@ export default function Sections({ sections }: { sections: Page['fields']['secti
                 return <Header key={section.sys.id} entry={section as HeaderEntry} />
             case 'heroSection':
                 return <Hero key={section.sys.id} entry={section as HeroSectionEntry} />
+            case 'factsSection':
+                return <Facts key={section.sys.id} entry={section as FactsSectionEntry} />
             case 'aboutMeSection':
                 return <About key={section.sys.id} entry={section as AboutMeSectionEntry} />
             case 'stepsSection':

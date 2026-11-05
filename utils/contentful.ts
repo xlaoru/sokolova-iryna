@@ -35,7 +35,7 @@ export type ButtonSkeleton = {
   contentTypeId: 'button'
   fields: {
     text: EntryFieldTypes.Symbol
-    variant: EntryFieldTypes.Symbol
+    variant: 'Primary' | 'Outline'
   }
 }
 
@@ -64,6 +64,7 @@ export type HeroSectionSkeleton = {
   contentTypeId: 'heroSection'
   fields: {
     internalName: EntryFieldTypes.Symbol
+    slug: EntryFieldTypes.Symbol
     title: EntryFieldTypes.Symbol
     description: EntryFieldTypes.Text
     cta: EntryFieldTypes.EntryLink<ButtonSkeleton>
@@ -73,10 +74,30 @@ export type HeroSectionSkeleton = {
 
 export type HeroSectionEntry = Entry<HeroSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
 
+export type FactSkeleton = {
+  contentTypeId: 'fact'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    fact: EntryFieldTypes.Symbol
+    description: EntryFieldTypes.Symbol
+  }
+}
+
+export type FactsSectionSkeleton = {
+  contentTypeId: 'factsSection'
+  fields: {
+    internalName: EntryFieldTypes.Symbol
+    facts: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<FactSkeleton>>
+  }
+}
+
+export type FactsSectionEntry = Entry<FactsSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+
 export type AboutMeSectionSkeleton = {
   contentTypeId: 'aboutMeSection'
   fields: {
     internalName: EntryFieldTypes.Symbol
+    slug: EntryFieldTypes.Symbol
     title: EntryFieldTypes.Symbol
     body: EntryFieldTypes.Text
     bulletList: EntryFieldTypes.Array<EntryFieldTypes.Symbol>
@@ -99,6 +120,7 @@ export type StepsSectionSkeleton = {
   contentTypeId: 'stepsSection'
   fields: {
     internalName: EntryFieldTypes.Symbol
+    slug: EntryFieldTypes.Symbol
     title: EntryFieldTypes.Symbol
     description: EntryFieldTypes.Symbol
     steps: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<StepSkeleton>>
@@ -123,6 +145,7 @@ export type CasesSectionSkeleton = {
   contentTypeId: 'casesSection'
   fields: {
     internalName: EntryFieldTypes.Symbol
+    slug: EntryFieldTypes.Symbol
     title: EntryFieldTypes.Symbol
     description: EntryFieldTypes.Symbol
     cases: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<CaseSkeleton>>
@@ -148,6 +171,7 @@ export type PricesSectionSkeleton = {
   contentTypeId: 'pricesSection'
   fields: {
     internalName: EntryFieldTypes.Symbol
+    slug: EntryFieldTypes.Symbol
     title: EntryFieldTypes.Symbol
     description: EntryFieldTypes.Symbol
     prices: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<PriceSkeleton>>
@@ -171,6 +195,7 @@ export type TestimonialsSectionSkeleton = {
   contentTypeId: 'testimonialsSection'
   fields: {
     internalName: EntryFieldTypes.Symbol
+    slug: EntryFieldTypes.Symbol
     title: EntryFieldTypes.Symbol
     description: EntryFieldTypes.Symbol
     testimonials: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<TestimonialSkeleton>>
@@ -178,12 +203,16 @@ export type TestimonialsSectionSkeleton = {
   }
 }
 
-export type TestimonialsSectionEntry = Entry<TestimonialsSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+export type TestimonialsSectionEntry = Entry<
+  TestimonialsSectionSkeleton,
+  'WITHOUT_UNRESOLVABLE_LINKS'
+>
 
 export type DocumentsSectionSkeleton = {
   contentTypeId: 'documentsSection'
   fields: {
     internalName: EntryFieldTypes.Symbol
+    slug: EntryFieldTypes.Symbol
     title: EntryFieldTypes.Symbol
     description: EntryFieldTypes.Symbol
     documents: EntryFieldTypes.Array<EntryFieldTypes.AssetLink>
@@ -206,6 +235,7 @@ export type FaqSectionSkeleton = {
   contentTypeId: 'faQSection'
   fields: {
     internalName: EntryFieldTypes.Symbol
+    slug: EntryFieldTypes.Symbol
     title: EntryFieldTypes.Symbol
     faQs: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<FaqItemSkeleton>>
   }
@@ -224,6 +254,7 @@ export type CtaSectionSkeleton = {
   contentTypeId: 'ctaSection'
   fields: {
     internalName: EntryFieldTypes.Symbol
+    slug: EntryFieldTypes.Symbol
     title: EntryFieldTypes.Symbol
     description: EntryFieldTypes.Symbol
     input: EntryFieldTypes.EntryLink<InputSkeleton>
@@ -258,7 +289,20 @@ export type PageSkeleton = {
     internalName: EntryFieldTypes.Symbol
     slug: EntryFieldTypes.Symbol
     sections: EntryFieldTypes.Array<
-      EntryFieldTypes.EntryLink<HeaderSkeleton | HeroSectionSkeleton | AboutMeSectionSkeleton | StepsSectionSkeleton | CasesSectionSkeleton | PricesSectionSkeleton | TestimonialsSectionSkeleton | DocumentsSectionSkeleton | FaqSectionSkeleton | CtaSectionSkeleton | FooterSkeleton>
+      EntryFieldTypes.EntryLink<
+        | HeaderSkeleton
+        | HeroSectionSkeleton
+        | FactsSectionSkeleton
+        | AboutMeSectionSkeleton
+        | StepsSectionSkeleton
+        | CasesSectionSkeleton
+        | PricesSectionSkeleton
+        | TestimonialsSectionSkeleton
+        | DocumentsSectionSkeleton
+        | FaqSectionSkeleton
+        | CtaSectionSkeleton
+        | FooterSkeleton
+      >
     >
   }
 }

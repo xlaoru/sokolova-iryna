@@ -1,18 +1,159 @@
 @import 'tailwindcss';
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+}
+
+@theme {
+  /* Neutral */
+  --color-white: #ffffff;
+  --color-white-2: #fdfdfd;
+
+  --color-neutral-50: #f9f9f9;
+  --color-neutral-100: #f4f4f4;
+  --color-neutral-200: #eaeaea;
+  --color-neutral-300: #d0d0d0;
+  --color-neutral-400: #ababab;
+  --color-neutral-500: #818181;
+  --color-neutral-600: #666666;
+  --color-neutral-700: #4a4a4a;
+  --color-neutral-800: #333333;
+  --color-neutral-900: #1e1e1e;
+  --color-neutral-920: #161616;
+  --color-neutral-940: #111111;
+  --color-neutral-950: #0a0a0a;
+
+  --color-black: #000000;
+
+  /* Blue */
+  --color-blue-50: #eef2ff;
+  --color-blue-100: #dbe3ff;
+  --color-blue-200: #b8c7ff;
+  --color-blue-300: #8ea5ff;
+  --color-blue-400: #5a7aff;
+  --color-blue-500: #2b52f5;
+  --color-blue-600: #002ec6;
+  --color-blue-700: #0023a0;
+  --color-blue-800: #001880;
+  --color-blue-900: #000e5c;
+  --color-blue-950: #000a53;
 }
 
 @theme inline {
-  --color-foreground: var(--foreground);
   --font-sans: var(--font-google-sans);
   --font-serif: var(--font-tinos);
 }
 
+@layer components {
+  /* 
+    *
+    * Fonts 
+    *
+  */
+
+  .display,
+  h1,
+  h2,
+  h3,
+  h4,
+  h5 {
+    @apply font-serif;
+  }
+
+  button,
+  p {
+    @apply font-sans;
+  }
+
+  /* 
+    *
+    * Typography 
+    *
+  */
+
+  .display {
+    @apply font-normal text-[84px] leading-[normal];
+  }
+
+  h1 {
+    @apply font-normal text-[56px] leading-[60px];
+  }
+
+  h2 {
+    @apply font-normal text-[48px] leading-[52px];
+  }
+
+  h3 {
+    @apply font-normal text-[32px] leading-[36px];
+  }
+
+  h4 {
+    @apply font-normal text-[24px] leading-[32px];
+  }
+
+  h5 {
+    @apply font-normal text-[20px] leading-[28px];
+  }
+
+  p,
+  a {
+    @apply font-normal text-[16px] leading-[24px];
+  }
+
+  /* 
+    *
+    * Button 
+    *
+  */
+
+  button {
+    @apply h-[52px] px-[40px] rounded-[2px] transition-colors duration-800 ease-out font-semibold text-[16px] leading-[18px] border-1;
+  }
+
+  .btn-primary {
+    @apply bg-blue-600 text-white hover:bg-blue-700;
+  }
+
+  .btn-outline {
+    @apply bg-transparent text-blue-600 border-blue-600;
+  }
+
+  /* 
+    *
+    * Header
+    *
+  */
+
+  header {
+    @apply sticky top-0 z-50 bg-white flex flex-row justify-between py-[24px];
+  }
+
+  /* 
+    *
+    * Nav
+    *
+  */
+
+  nav {
+    @apply flex flex-row gap-[24px];
+  }
+
+  /* 
+    *
+    * Main
+    *
+  */
+
+  main {
+    @apply w-full max-w-[1920px] mx-auto px-[96px];
+  }
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
 body {
-  background: var(--background);
+  background: var(--white);
   color: var(--foreground);
   font-family: var(--font-sans);
 }

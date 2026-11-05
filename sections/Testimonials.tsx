@@ -1,11 +1,11 @@
 import type { TestimonialsSectionEntry } from "@/utils/contentful";
 
 export default function Testimonials({ entry }: { entry: TestimonialsSectionEntry }) {
-    const { title, description, testimonials, background } = entry.fields
+    const { title, description, testimonials, background, slug } = entry.fields
     const backgroundUrl = background?.fields.file?.url
     return (
         <section
-            id="testimonials"
+            id={slug}
             style={backgroundUrl ? { backgroundImage: `url(https:${backgroundUrl})` } : undefined}
         >
             <h2>{title}</h2>

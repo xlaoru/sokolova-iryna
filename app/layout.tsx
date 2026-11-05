@@ -23,9 +23,14 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
   return (
     <html
       lang="en"
+      data-scroll-behavior="smooth"
       className={`${googleSans.variable} ${tinos.variable} h-full antialiased`}
     >
-      <body className="min-h-full flex flex-col">{children}</body>
+      <body className="min-h-full flex flex-col">
+        <main>
+          {children}
+        </main>
+      </body>
     </html>
   );
 }

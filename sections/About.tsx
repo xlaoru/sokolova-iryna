@@ -1,10 +1,10 @@
 import type { AboutMeSectionEntry } from "@/utils/contentful";
 
 export default function About({ entry }: { entry: AboutMeSectionEntry }) {
-    const { title, body, bulletList, image } = entry.fields
+    const { title, body, bulletList, image, slug } = entry.fields
     const imageUrl = image?.fields.file?.url
     return (
-        <section id="about">
+        <section id={slug}>
             {imageUrl && <img src={`https:${imageUrl}`} alt={image?.fields.title ?? title} />}
             <div>
                 <h2>{title}</h2>

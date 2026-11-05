@@ -1,9 +1,9 @@
 import type { CasesSectionEntry } from "@/utils/contentful";
 
 export default function Cases({ entry }: { entry: CasesSectionEntry }) {
-    const { title, description, cases } = entry.fields
+    const { title, description, cases, slug } = entry.fields
     return (
-        <section id="cases">
+        <section id={slug}>
             <h2>{title}</h2>
             {description && <p>{description}</p>}
             <ul>

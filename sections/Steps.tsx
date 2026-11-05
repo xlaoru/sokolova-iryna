@@ -1,9 +1,9 @@
 import type { StepsSectionEntry } from "@/utils/contentful";
 
 export default function Steps({ entry }: { entry: StepsSectionEntry }) {
-    const { title, description, steps, cta } = entry.fields
+    const { title, description, steps, cta, slug } = entry.fields
     return (
-        <section id="steps">
+        <section id={slug}>
             <h2>{title}</h2>
             {description && <p>{description}</p>}
             <ol>
