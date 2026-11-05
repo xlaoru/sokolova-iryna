@@ -99,7 +99,7 @@ export type AboutMeSectionSkeleton = {
     internalName: EntryFieldTypes.Symbol
     slug: EntryFieldTypes.Symbol
     title: EntryFieldTypes.Symbol
-    body: EntryFieldTypes.Text
+    body: EntryFieldTypes.Array<EntryFieldTypes.Symbol>
     bulletList: EntryFieldTypes.Array<EntryFieldTypes.Symbol>
     image: EntryFieldTypes.AssetLink
   }
