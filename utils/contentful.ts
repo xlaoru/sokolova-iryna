@@ -35,7 +35,7 @@ export type ButtonSkeleton = {
   contentTypeId: 'button'
   fields: {
     text: EntryFieldTypes.Symbol
-    variant: 'Primary' | 'Outline'
+    variant: EntryFieldTypes.Symbol<'Primary' | 'Outline'>
   }
 }
 

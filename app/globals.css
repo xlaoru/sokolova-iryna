@@ -43,6 +43,11 @@
   --font-serif: var(--font-tinos);
 }
 
+/* Секция на всю ширину экрана, даже внутри main с max-w и паддингами */
+@utility full-bleed {
+  @apply relative w-screen left-1/2 -translate-x-1/2;
+}
+
 @layer components {
   /* 
     *
@@ -156,4 +161,5 @@ body {
   background: var(--white);
   color: var(--foreground);
   font-family: var(--font-sans);
+  overflow-x: clip;
 }
