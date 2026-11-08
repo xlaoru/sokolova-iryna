@@ -1,6 +1,7 @@
 @import 'tailwindcss';
 
 :root {
+  --header-h: 94px;
 }
 
 @theme {
@@ -129,7 +130,7 @@
   */
 
   header {
-    @apply sticky top-0 z-50 bg-white flex flex-row justify-between py-[24px];
+    @apply sticky top-0 z-50 bg-white flex flex-row justify-between items-center h-(--header-h);
   }
 
   /* 
