@@ -132,7 +132,7 @@
   */
 
   header {
-    @apply sticky top-0 z-50 bg-white flex flex-row justify-between items-center h-(--header-h);
+    @apply sticky top-0 z-50 bg-white flex flex-row justify-between items-center h-(--header-h) w-screen ml-[calc(50%-50vw)] px-[max(96px,calc(50vw-864px))];
   }
 
   /* 
@@ -154,6 +154,16 @@
   main {
     @apply w-full max-w-[1920px] mx-auto px-[96px];
   }
+
+  /* 
+    *
+    * Footer
+    *
+  */
+
+  /* footer {
+    @apply;
+  } */
 }
 
 html {
