@@ -19,10 +19,11 @@ export default function Testimonials({ entry }: { entry: TestimonialsSectionEntr
 
     return (
         <section
-            className="flex flex-col gap-[48px] py-[64px]"
             id={slug}
             style={backgroundUrl ? { backgroundImage: `url(https:${backgroundUrl})` } : undefined}
+            className="full-bleed bg-cover bg-center bg-no-repeat"
         >
+            <div className="max-w-[1920px] mx-auto px-[96px] flex flex-col gap-[48px] py-[64px]">
             <div className="flex flex-col gap-[16px]">
                 <h2 className="text-black text-center">{title}</h2>
                 {description && <p className="text-neutral-600 text-center">{description}</p>}
@@ -47,6 +48,7 @@ export default function Testimonials({ entry }: { entry: TestimonialsSectionEntr
                     </li>
                 </ul>
                 <ChevronRight onClick={() => setActiveSlide((prev) => (prev + 1) % items.length)} className={`cursor-pointer size-[52px] p-[10px] text-blue-600 border-2 border-blue-600 rounded-full hover:opacity-70 transition-colors duration-800 ease-out`} />
+            </div>
             </div>
         </section>
     );
