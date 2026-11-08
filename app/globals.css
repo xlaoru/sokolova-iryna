@@ -161,9 +161,9 @@
     *
   */
 
-  /* footer {
-    @apply;
-  } */
+  footer {
+    @apply flex flex-row justify-between gap-[48px] pt-[128px] pb-[24px] bg-blue-950 w-screen ml-[calc(50%-50vw)] px-[max(96px,calc(50vw-864px))];
+  }
 }
 
 html {

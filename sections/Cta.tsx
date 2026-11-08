@@ -19,7 +19,7 @@ export default function Cta({ entry }: { entry: CtaSectionEntry }) {
             <form className="flex flex-row gap-[8px]">
                 <label className="flex flex-row items-center gap-[2px] h-[52px] px-[16px] w-[237px] rounded-[2px] border-1 border-blue-300 bg-blue-950 text-white focus-within:border-blue-200 transition-colors">
                     <span>+380</span>
-                    <input className="flex-1 min-w-0 bg-transparent outline-none placeholder:text-neutral-400" type="tel" name="phone" placeholder={input?.fields.placeholder} required />
+                    <input className="flex-1 min-w-0 bg-transparent outline-none placeholder:text-[#7C89A9]" type="tel" name="phone" placeholder={input?.fields.placeholder} required />
                 </label>
                 {button && <Button variant={button.fields.variant} onClick={() => { }} >{button.fields.text}</Button>}
             </form>
