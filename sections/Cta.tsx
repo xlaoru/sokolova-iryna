@@ -1,3 +1,6 @@
+"use client"
+
+import Button from "@/components/Button";
 import type { CtaSectionEntry } from "@/utils/contentful";
 
 export default function Cta({ entry }: { entry: CtaSectionEntry }) {
@@ -5,14 +8,20 @@ export default function Cta({ entry }: { entry: CtaSectionEntry }) {
     const backgroundUrl = background?.fields.file?.url
     return (
         <section
+            className="full-bleed flex flex-col gap-[48px] py-[128px] items-center bg-cover bg-center bg-no-repeat"
             id="contact"
             style={backgroundUrl ? { backgroundImage: `url(https:${backgroundUrl})` } : undefined}
         >
-            <h2>{title}</h2>
-            {description && <p>{description}</p>}
-            <form>
-                <input type="tel" name="phone" placeholder={input?.fields.placeholder} required />
-                {button && <button type="submit">{button.fields.text}</button>}
+            <div className="flex flex-col gap-[16px]">
+                <h2 className="text-white text-center">{title}</h2>
+                {description && <p className="text-white text-center">{description}</p>}
+            </div>
+            <form className="flex flex-row gap-[8px]">
+                <label className="flex flex-row items-center gap-[2px] h-[52px] px-[16px] min-w-[320px] rounded-[2px] border-1 border-blue-300 bg-blue-950 text-white focus-within:border-blue-200 transition-colors">
+                    <span>+380</span>
+                    <input className="flex-1 min-w-0 bg-transparent outline-none placeholder:text-neutral-400" type="tel" name="phone" placeholder={input?.fields.placeholder} required />
+                </label>
+                {button && <Button variant={button.fields.variant} onClick={() => { }} >{button.fields.text}</Button>}
             </form>
         </section>
     );
