@@ -17,7 +17,7 @@ export default function Cta({ entry }: { entry: CtaSectionEntry }) {
                 {description && <p className="text-white text-center">{description}</p>}
             </div>
             <form className="flex flex-row gap-[8px]">
-                <label className="flex flex-row items-center gap-[2px] h-[52px] px-[16px] min-w-[320px] rounded-[2px] border-1 border-blue-300 bg-blue-950 text-white focus-within:border-blue-200 transition-colors">
+                <label className="flex flex-row items-center gap-[2px] h-[52px] px-[16px] w-[237px] rounded-[2px] border-1 border-blue-300 bg-blue-950 text-white focus-within:border-blue-200 transition-colors">
                     <span>+380</span>
                     <input className="flex-1 min-w-0 bg-transparent outline-none placeholder:text-neutral-400" type="tel" name="phone" placeholder={input?.fields.placeholder} required />
                 </label>
