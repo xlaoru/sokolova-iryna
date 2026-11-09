@@ -132,7 +132,7 @@
   */
 
   header {
-    @apply sticky top-0 z-50 bg-white flex flex-row justify-between items-center h-(--header-h) w-screen ml-[calc(50%-50vw)] px-[max(96px,calc(50vw-864px))];
+    @apply sticky top-0 z-50 bg-white flex flex-row justify-between items-center h-(--header-h) w-screen ml-[calc(50%-50vw)] px-[max(96px,calc(50vw-864px))] max-[769px]:px-[16px];
   }
 
   /* 
@@ -142,7 +142,7 @@
   */
 
   nav {
-    @apply flex flex-row gap-[24px];
+    @apply flex flex-row gap-[24px] max-[1025px]:hidden;
   }
 
   /* 
@@ -152,7 +152,7 @@
   */
 
   main {
-    @apply w-full max-w-[1920px] mx-auto px-[96px];
+    @apply w-full max-w-[1920px] mx-auto px-[96px] max-[769px]:px-[16px];
   }
 
   /* 
