@@ -111,7 +111,7 @@
     @apply font-semibold text-[16px] leading-[18px];
   }
 
-  @media (width < 1025px) {
+  @media (width < 1200px) {
     .display {
       @apply text-[64px] leading-[68px];
     }
