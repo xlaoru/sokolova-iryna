@@ -4,6 +4,7 @@ import { useState } from "react";
 import type { HeaderEntry } from "@/utils/contentful";
 import { Menu, X } from "lucide-react";
 import Button from "./Button";
+import { navigate } from "@/utils/navigate";
 
 export default function Header({ entry }: { entry: HeaderEntry }) {
     const { brandName, brandSubtitle, bookmarks, button } = entry.fields
@@ -23,7 +24,7 @@ export default function Header({ entry }: { entry: HeaderEntry }) {
                         </a>
                     ))}
                 </nav>
-                {button && <Button className="!h-[40px] !px-[24] max-[769px]:hidden" variant={button.fields.variant} onClick={() => { }}>{button.fields.text}</Button>}
+                {button && <Button className="!h-[40px] !px-[24] max-[769px]:hidden" variant={button.fields.variant} onClick={() => navigate("contact")}>{button.fields.text}</Button>}
                 <button type="button" aria-label="Menu" aria-expanded={isOpen} onClick={() => setIsOpen(!isOpen)} className="size-[48px] p-[12px] rounded-[2px] border-1 border-neutral-100 bg-white text-black hidden max-[1025px]:flex">
                     {isOpen ? <X className="size-full" /> : <Menu className="size-full" />}
                 </button>
@@ -34,7 +35,7 @@ export default function Header({ entry }: { entry: HeaderEntry }) {
                         {bookmark.fields.title}
                     </a>
                 ))}
-                {button && <Button className="!h-[40px] !px-[24] min-[769px]:hidden" variant={button.fields.variant} onClick={() => setIsOpen(false)}>{button.fields.text}</Button>}
+                {button && <Button className="!h-[40px] !px-[24] min-[769px]:hidden" variant={button.fields.variant} onClick={() => { setIsOpen(false); navigate("contact") }}>{button.fields.text}</Button>}
             </div>
         </header>
     );

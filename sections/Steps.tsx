@@ -2,6 +2,7 @@
 
 import Button from "@/components/Button";
 import type { StepsSectionEntry } from "@/utils/contentful";
+import { navigate } from "@/utils/navigate";
 
 export default function Steps({ entry }: { entry: StepsSectionEntry }) {
     const { title, description, steps, cta, slug } = entry.fields
@@ -22,7 +23,7 @@ export default function Steps({ entry }: { entry: StepsSectionEntry }) {
                     </li>
                 ))}
             </ul>
-            {cta && <Button className="max-[476px]:w-full" variant={cta.fields.variant} onClick={() => { }}>{cta.fields.text}</Button>}
+            {cta && <Button className="max-[476px]:w-full" variant={cta.fields.variant} onClick={() => { navigate("contact") }}>{cta.fields.text}</Button>}
         </section>
     );
 }

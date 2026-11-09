@@ -2,6 +2,7 @@
 
 import Button from "@/components/Button";
 import type { PricesSectionEntry } from "@/utils/contentful";
+import { navigate } from "@/utils/navigate";
 import { Check } from "lucide-react";
 
 export default function Prices({ entry }: { entry: PricesSectionEntry }) {
@@ -32,7 +33,7 @@ export default function Prices({ entry }: { entry: PricesSectionEntry }) {
                                     </ul>
                                 )}
                                 <h4 className="mt-auto text-black">{price}</h4>
-                                {cta && <Button variant={cta.fields.variant} onClick={() => { }}>{cta.fields.text}</Button>}
+                                {cta && <Button variant={cta.fields.variant} onClick={() => { navigate("contact") }}>{cta.fields.text}</Button>}
                             </div>
                         </li>
                     )

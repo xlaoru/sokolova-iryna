@@ -2,6 +2,7 @@
 
 import Button from "@/components/Button";
 import type { CasesSectionEntry } from "@/utils/contentful";
+import { navigate } from "@/utils/navigate";
 import { FileSearchCorner } from "lucide-react";
 import { useState } from "react";
 
@@ -39,7 +40,7 @@ export default function Cases({ entry }: { entry: CasesSectionEntry }) {
                                         ))}
                                     </ul>
                                 )}
-                                {activeCase.fields.cta && <Button variant={activeCase.fields.cta.fields.variant} onClick={() => { }} className="w-fit">{activeCase.fields.cta.fields.text}</Button>}
+                                {activeCase.fields.cta && <Button variant={activeCase.fields.cta.fields.variant} onClick={() => { navigate("contact") }} className="w-fit">{activeCase.fields.cta.fields.text}</Button>}
                             </div>
                         </div>
                     )}
@@ -60,7 +61,7 @@ export default function Cases({ entry }: { entry: CasesSectionEntry }) {
                                         ))}
                                     </ul>
                                 )}
-                                {item.fields.cta && <Button className="w-full" variant={item.fields.cta.fields.variant} onClick={() => { }}>{item.fields.cta.fields.text}</Button>}
+                                {item.fields.cta && <Button className="w-full" variant={item.fields.cta.fields.variant} onClick={() => { navigate("contact") }}>{item.fields.cta.fields.text}</Button>}
                             </div>
                         </div>
                     ))}
