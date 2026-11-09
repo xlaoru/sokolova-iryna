@@ -12,14 +12,14 @@ export default function Prices({ entry }: { entry: PricesSectionEntry }) {
                 <h2 className="text-black">{title}</h2>
                 {description && <p className="text-neutral-600">{description}</p>}
             </div>
-            <ul className="flex flex-row justify-between gap-[24px]">
+            <ul className="flex flex-row max-[1025px]:flex-col justify-between gap-[24px]">
                 {prices.filter((p) => p !== undefined).map((item) => {
                     const { title, description, bulletList, price, cta, image } = item.fields
                     const imageUrl = image?.fields.file?.url
                     return (
-                        <li key={item.sys.id} className="w-[380px] h-[577px]">
-                            {imageUrl && <img src={`https:${imageUrl}`} alt={image?.fields.title ?? title} />}
-                            <div className="flex flex-col gap-[24px] border border-neutral-200 pt-[16px] px-[24px] pb-[24px] border-t-0 rounded-[2px]">
+                        <li key={item.sys.id} className="w-full flex flex-col">
+                            {imageUrl && <img className="w-full" src={`https:${imageUrl}`} alt={image?.fields.title ?? title} />}
+                            <div className="flex-1 flex flex-col gap-[24px] border border-neutral-200 pt-[16px] px-[24px] pb-[24px] border-t-0 rounded-[2px]">
                                 <div className="flex flex-col gap-[12px]">
                                     <h3 className="text-black w-[60%]">{title}</h3>
                                     <p className="text-neutral-600">{description}</p>
@@ -31,7 +31,7 @@ export default function Prices({ entry }: { entry: PricesSectionEntry }) {
                                         ))}
                                     </ul>
                                 )}
-                                <h4 className="text-black">{price}</h4>
+                                <h4 className="mt-auto text-black">{price}</h4>
                                 {cta && <Button variant={cta.fields.variant} onClick={() => { }}>{cta.fields.text}</Button>}
                             </div>
                         </li>
