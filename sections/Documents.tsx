@@ -9,24 +9,37 @@ import { useEffect, useRef, useState } from "react";
 const CARD_WIDTH = 188
 const GAP = 24
 const ROWS = 1
+const TABLET_QUERY = "(width < 826px)"
+const TABLET_COLUMNS = 2
+const TABLET_ROWS = 4
+const MOBILE_QUERY = "(width < 526px)"
+const MOBILE_COLUMNS = 1
+const MOBILE_ROWS = 4
 
 export default function Documents({ entry }: { entry: DocumentsSectionEntry }) {
     const { title, description, documents, cta, slug } = entry.fields
 
     const listRef = useRef<HTMLUListElement>(null)
-    const [columns, setColumns] = useState(6)
+    const [limit, setLimit] = useState(6 * ROWS)
 
     useEffect(() => {
         const list = listRef.current
         if (!list) return
         const observer = new ResizeObserver(([e]) => {
-            setColumns(Math.max(1, Math.floor((e.contentRect.width + GAP) / (CARD_WIDTH + GAP))))
+            if (window.matchMedia(MOBILE_QUERY).matches) {
+                setLimit(MOBILE_COLUMNS * MOBILE_ROWS)
+                return
+            }
+            if (window.matchMedia(TABLET_QUERY).matches) {
+                setLimit(TABLET_COLUMNS * TABLET_ROWS)
+                return
+            }
+            const columns = Math.max(1, Math.floor((e.contentRect.width + GAP) / (CARD_WIDTH + GAP)))
+            setLimit(columns * ROWS)
         })
         observer.observe(list)
         return () => observer.disconnect()
     }, [])
-
-    const limit = columns * ROWS
 
     const [isExtended, setExtended] = useState(false)
 
@@ -44,7 +57,7 @@ export default function Documents({ entry }: { entry: DocumentsSectionEntry }) {
                 <h2 className="text-black text-center">{title}</h2>
                 {description && <p className="text-neutral-600 text-center">{description}</p>}
             </div>
-            <ul ref={listRef} className="grid w-full grid-cols-[repeat(auto-fit,188px)] gap-[24px]">
+            <ul ref={listRef} className="grid w-full grid-cols-[repeat(auto-fit,188px)] max-[826px]:grid-cols-[repeat(2,188px)] max-[526px]:grid-cols-1 justify-center gap-[24px]">
                 {visibleDocuments.map((document, index) => (
                     <li key={document!.sys.id}>
                         <DocumentPreview url={urls[index]} onClick={() => { setActiveSlide(index); setOpen(true) }} />
