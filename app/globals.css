@@ -107,6 +107,56 @@
     @apply font-normal text-[16px] leading-[24px];
   }
 
+  button {
+    @apply font-semibold text-[16px] leading-[18px];
+  }
+
+  @media (width < 1025px) {
+    .display {
+      @apply text-[64px] leading-[68px];
+    }
+
+    h1 {
+      @apply text-[36px] leading-[40px];
+    }
+
+    h2 {
+      @apply font-normal text-[32px] leading-[36px];
+    }
+
+    h3 {
+      @apply font-normal text-[24px] leading-[28px];
+    }
+
+    h4,
+    blockquote {
+      @apply font-normal text-[22px] leading-[24px];
+    }
+
+    h5 {
+      @apply font-normal text-[20px] leading-[22px];
+    }
+
+    p,
+    a,
+    label {
+      @apply font-normal text-[14px] leading-[22px];
+    }
+
+    button {
+      @apply font-semibold text-[14px] leading-[16px];
+    }
+  }
+
+  @media (width < 769px) {
+  }
+
+  @media (width < 376px) {
+    h1 {
+      @apply text-[32px] leading-[38px];
+    }
+  }
+
   /* 
     *
     * Button 
@@ -114,7 +164,7 @@
   */
 
   button {
-    @apply cursor-pointer h-[52px] px-[40px] rounded-[2px] transition-colors duration-800 ease-out font-semibold text-[16px] leading-[18px] border-1;
+    @apply cursor-pointer h-[52px] px-[40px] rounded-[2px] transition-colors duration-800 ease-out border-1;
   }
 
   .btn-primary {
