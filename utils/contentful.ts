@@ -261,6 +261,8 @@ export type CtaSectionSkeleton = {
     input: EntryFieldTypes.EntryLink<InputSkeleton>
     button: EntryFieldTypes.EntryLink<ButtonSkeleton>
     background: EntryFieldTypes.AssetLink
+    errorMessage: EntryFieldTypes.Symbol
+    successMessage: EntryFieldTypes.Symbol
   }
 }
 
