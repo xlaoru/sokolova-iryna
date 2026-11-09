@@ -50,6 +50,7 @@ export default function Documents({ entry }: { entry: DocumentsSectionEntry }) {
     const visibleDocuments = isExtended ? validDocuments : validDocuments.slice(0, limit)
     const hasMore = validDocuments.length > limit
     const urls = validDocuments.map((d) => `https:${d!.fields.file!.url}`)
+    const alts = validDocuments.map((d) => d!.fields.description || d!.fields.title)
 
     return (
         <section id={slug} className="flex flex-col items-center gap-[48px] py-[64px]">
@@ -60,12 +61,12 @@ export default function Documents({ entry }: { entry: DocumentsSectionEntry }) {
             <ul ref={listRef} className="grid w-full grid-cols-[repeat(auto-fit,188px)] max-[826px]:grid-cols-[repeat(2,188px)] max-[526px]:grid-cols-1 justify-center gap-[24px]">
                 {visibleDocuments.map((document, index) => (
                     <li key={document!.sys.id}>
-                        <DocumentPreview url={urls[index]} onClick={() => { setActiveSlide(index); setOpen(true) }} />
+                        <DocumentPreview url={urls[index]} alt={alts[index]} onClick={() => { setActiveSlide(index); setOpen(true) }} />
                     </li>
                 ))}
             </ul>
             {hasMore && cta && <Button className="!w-fit" variant={cta.fields.variant} onClick={() => { setExtended(!isExtended) }}>{isExtended ? cta.fields.secondaryText ?? cta.fields.text : cta.fields.text}</Button>}
-            {isOpen && <DocumentsOverlay urls={urls} activeSlide={activeSlide} setActiveSlide={setActiveSlide} onClose={() => setOpen(false)} />}
+            {isOpen && <DocumentsOverlay urls={urls} alts={alts} activeSlide={activeSlide} setActiveSlide={setActiveSlide} onClose={() => setOpen(false)} />}
         </section>
     );
 }

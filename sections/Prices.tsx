@@ -19,7 +19,7 @@ export default function Prices({ entry }: { entry: PricesSectionEntry }) {
                     const imageUrl = image?.fields.file?.url
                     return (
                         <li key={item.sys.id} className="w-full flex flex-col">
-                            {imageUrl && <img className="w-full" src={`https:${imageUrl}`} alt={image?.fields.title ?? title} />}
+                            {imageUrl && <img className="w-full" src={`https:${imageUrl}`} alt={image?.fields.description || image?.fields.title || title} />}
                             <div className="flex-1 flex flex-col gap-[24px] border border-neutral-200 pt-[16px] px-[24px] pb-[24px] border-t-0 rounded-[2px]">
                                 <div className="flex flex-col gap-[12px]">
                                     <h3 className="text-black w-[60%]">{title}</h3>

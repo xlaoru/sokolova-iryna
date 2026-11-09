@@ -5,12 +5,13 @@ import { useEffect } from "react";
 
 type Props = {
     urls: string[]
+    alts: (string | undefined)[]
     activeSlide: number
     setActiveSlide: (index: number) => void
     onClose: () => void
 };
 
-export default function DocumentsOverlay({ urls, activeSlide, setActiveSlide, onClose }: Props) {
+export default function DocumentsOverlay({ urls, alts, activeSlide, setActiveSlide, onClose }: Props) {
     const prev = () => setActiveSlide((activeSlide - 1 + urls.length) % urls.length)
     const next = () => setActiveSlide((activeSlide + 1) % urls.length)
 
@@ -35,7 +36,7 @@ export default function DocumentsOverlay({ urls, activeSlide, setActiveSlide, on
             <X onClick={onClose} className="absolute top-[32px] right-[32px] cursor-pointer size-[32px] text-white hover:opacity-70 transition-opacity duration-300" />
             <ChevronLeft onClick={(e) => { e.stopPropagation(); prev() }} className="max-[826px]:hidden absolute left-[64px] cursor-pointer size-[52px] p-[10px] text-white border-2 border-white rounded-full hover:opacity-70 transition-opacity duration-300" />
             <div className="flex flex-col items-center gap-[36px]">
-                <img onClick={(e) => e.stopPropagation()} src={urls[activeSlide]} className="max-w-[calc(100vw-320px)] max-h-[calc(100vh-64px)] max-[826px]:max-w-[calc(100vw-32px)] max-[826px]:max-h-[calc(100vh-216px)] object-contain bg-white" />
+                <img onClick={(e) => e.stopPropagation()} src={urls[activeSlide]} alt={alts[activeSlide]} className="max-w-[calc(100vw-320px)] max-h-[calc(100vh-64px)] max-[826px]:max-w-[calc(100vw-32px)] max-[826px]:max-h-[calc(100vh-216px)] object-contain bg-white" />
                 <div className="hidden max-[826px]:flex gap-[24px]">
                     <ChevronLeft onClick={(e) => { e.stopPropagation(); prev() }} className="cursor-pointer size-[52px] p-[10px] text-white border-2 border-white rounded-full hover:opacity-70 transition-opacity duration-300" />
                     <ChevronRight onClick={(e) => { e.stopPropagation(); next() }} className="cursor-pointer size-[52px] p-[10px] text-white border-2 border-white rounded-full hover:opacity-70 transition-opacity duration-300" />

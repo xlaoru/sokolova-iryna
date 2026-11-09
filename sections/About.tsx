@@ -7,7 +7,7 @@ export default function About({ entry }: { entry: AboutMeSectionEntry }) {
 
     return (
         <section id={slug} className="flex flex-row max-[1025px]:flex-col gap-[24px] max-[1025px]:gap-[0px] py-[64px]">
-            {imageUrl && <img src={`https:${imageUrl}`} alt={image?.fields.title ?? title} className="w-[50%] max-[1025px]:w-[100%] max-[1025px]:h-[460px] rounded-[2px]" />}
+            {imageUrl && <img src={`https:${imageUrl}`} alt={image?.fields.description || image?.fields.title || title} className="w-[50%] max-[1025px]:w-[100%] max-[1025px]:h-[460px] rounded-[2px]" />}
             <div className="bg-neutral-50 p-[24px] rounded-[2px] w-full flex flex-row items-center justify-center">
                 <div className="w-[100%] flex flex-col gap-[16px]">
                     <h2 className="text-black">{title}</h2>
