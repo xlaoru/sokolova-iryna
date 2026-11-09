@@ -7,7 +7,7 @@ export default function Footer({ entry }: { entry: FooterEntry }) {
             {texts.filter((t) => t !== undefined).map((item) => (
                 <ul key={item.sys.id}>
                     {item.fields.texts?.map((text) => (
-                        <li key={text} className="text-[#7C89A9]">{text}</li>
+                        <li key={text} className="text-[#7C89A9] max-[1025px]:text-center">{text}</li>
                     ))}
                 </ul>
             ))}

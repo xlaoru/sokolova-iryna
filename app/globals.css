@@ -162,7 +162,7 @@
   */
 
   footer {
-    @apply flex flex-row justify-between gap-[48px] pt-[128px] pb-[24px] bg-blue-950 w-screen ml-[calc(50%-50vw)] px-[max(96px,calc(50vw-864px))];
+    @apply flex flex-row max-[1025px]:flex-col justify-between gap-[48px] pt-[128px] max-[1025px]:pt-[32px] pb-[24px] max-[1025px]:pb-[32px] bg-blue-950 w-screen ml-[calc(50%-50vw)] px-[max(96px,calc(50vw-864px))];
   }
 }
 
