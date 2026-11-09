@@ -6,7 +6,7 @@ import { navigate } from "@/utils/navigate";
 import { FileSearchCorner } from "lucide-react";
 import { useState } from "react";
 
-export default function Cases({ entry }: { entry: CasesSectionEntry }) {
+export default function Cases({ entry, ctaSlug }: { entry: CasesSectionEntry, ctaSlug?: string }) {
     const { title, description, cases, slug } = entry.fields
     const items = cases.filter((c) => c !== undefined)
 
@@ -40,7 +40,7 @@ export default function Cases({ entry }: { entry: CasesSectionEntry }) {
                                         ))}
                                     </ul>
                                 )}
-                                {activeCase.fields.cta && <Button variant={activeCase.fields.cta.fields.variant} onClick={() => { navigate("contact") }} className="w-fit">{activeCase.fields.cta.fields.text}</Button>}
+                                {activeCase.fields.cta && <Button variant={activeCase.fields.cta.fields.variant} onClick={() => { navigate(ctaSlug) }} className="w-fit">{activeCase.fields.cta.fields.text}</Button>}
                             </div>
                         </div>
                     )}
@@ -61,7 +61,7 @@ export default function Cases({ entry }: { entry: CasesSectionEntry }) {
                                         ))}
                                     </ul>
                                 )}
-                                {item.fields.cta && <Button className="w-full" variant={item.fields.cta.fields.variant} onClick={() => { navigate("contact") }}>{item.fields.cta.fields.text}</Button>}
+                                {item.fields.cta && <Button className="w-full" variant={item.fields.cta.fields.variant} onClick={() => { navigate(ctaSlug) }}>{item.fields.cta.fields.text}</Button>}
                             </div>
                         </div>
                     ))}

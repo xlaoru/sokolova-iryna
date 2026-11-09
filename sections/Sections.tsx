@@ -19,6 +19,7 @@ type Section = NonNullable<Page['fields']['sections'][number]>
 export default function Sections({ sections }: { sections: Page['fields']['sections'] }) {
     const list = sections.filter((s) => s !== undefined)
     const result = []
+    const ctaSlug = (list.find((s) => s.sys.contentType.sys.id === 'ctaSection') as CtaSectionEntry | undefined)?.fields.slug
 
     for (let i = 0; i < list.length; i++) {
         const section = list[i]
@@ -27,36 +28,36 @@ export default function Sections({ sections }: { sections: Page['fields']['secti
         if (section.sys.contentType.sys.id === 'heroSection' && next?.sys.contentType.sys.id === 'factsSection') {
             result.push(
                 <div key={section.sys.id} className="flex flex-col h-[calc(100svh-var(--header-h))] min-h-[600px]">
-                    {renderSection(section)}
-                    {renderSection(next)}
+                    {renderSection(section, ctaSlug)}
+                    {renderSection(next, ctaSlug)}
                 </div>
             )
             i++
             continue
         }
 
-        result.push(renderSection(section))
+        result.push(renderSection(section, ctaSlug))
     }
 
     return result
 }
 
-function renderSection(section: Section) {
+function renderSection(section: Section, ctaSlug?: string) {
     switch (section.sys.contentType.sys.id) {
         case 'header':
-            return <Header key={section.sys.id} entry={section as HeaderEntry} />
+            return <Header key={section.sys.id} entry={section as HeaderEntry} ctaSlug={ctaSlug} />
         case 'heroSection':
-            return <Hero key={section.sys.id} entry={section as HeroSectionEntry} />
+            return <Hero key={section.sys.id} entry={section as HeroSectionEntry} ctaSlug={ctaSlug} />
         case 'factsSection':
             return <Facts key={section.sys.id} entry={section as FactsSectionEntry} />
         case 'aboutMeSection':
             return <About key={section.sys.id} entry={section as AboutMeSectionEntry} />
         case 'stepsSection':
-            return <Steps key={section.sys.id} entry={section as StepsSectionEntry} />
+            return <Steps key={section.sys.id} entry={section as StepsSectionEntry} ctaSlug={ctaSlug} />
         case 'casesSection':
-            return <Cases key={section.sys.id} entry={section as CasesSectionEntry} />
+            return <Cases key={section.sys.id} entry={section as CasesSectionEntry} ctaSlug={ctaSlug} />
         case 'pricesSection':
-            return <Prices key={section.sys.id} entry={section as PricesSectionEntry} />
+            return <Prices key={section.sys.id} entry={section as PricesSectionEntry} ctaSlug={ctaSlug} />
         case 'testimonialsSection':
             return <Testimonials key={section.sys.id} entry={section as TestimonialsSectionEntry} />
         case 'documentsSection':

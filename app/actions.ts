@@ -1,5 +1,7 @@
 "use server"
 
+import { getEntries, type CtaSectionSkeleton } from "@/utils/contentful"
+
 export type CallbackStatus = "idle" | "success" | "invalid" | "error"
 
 export async function requestCallback(_prev: CallbackStatus, formData: FormData): Promise<CallbackStatus> {
@@ -14,10 +16,13 @@ export async function requestCallback(_prev: CallbackStatus, formData: FormData)
         return "error"
     }
 
+    const [cta] = await getEntries<CtaSectionSkeleton>("ctaSection").catch(() => [])
+    const { telegramBotMessageFallback = "", phoneCodeFallback = "+38" } = cta?.fields ?? {}
+
     const res = await fetch(`https://api.telegram.org/bot${token}/sendMessage`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id: chatId, text: `Нова заявка з сайту\nНомер клієнта: +38${local}` }),
+        body: JSON.stringify({ chat_id: chatId, text: `${telegramBotMessageFallback}\n${phoneCodeFallback}${local}`.trim() }),
     }).catch(() => null)
 
     if (!res?.ok) {

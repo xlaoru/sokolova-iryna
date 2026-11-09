@@ -4,7 +4,7 @@ import Button from "@/components/Button";
 import type { HeroSectionEntry } from "@/utils/contentful";
 import { navigate } from "@/utils/navigate";
 
-export default function Hero({ entry }: { entry: HeroSectionEntry }) {
+export default function Hero({ entry, ctaSlug }: { entry: HeroSectionEntry, ctaSlug?: string }) {
     const { title, description, cta, background, slug } = entry.fields
     const backgroundUrl = background?.fields.file?.url
     return (
@@ -12,7 +12,7 @@ export default function Hero({ entry }: { entry: HeroSectionEntry }) {
             <div className="w-[582px] flex flex-col gap-[24px] justify-center items-center">
                 <h1 className="max-[769px]:w-[70%] text-black text-center">{title}</h1>
                 <p className="max-[769px]:w-[70%] text-neutral-600 text-center">{description}</p>
-                {cta && <Button className="w-fit max-[476px]:w-full" variant={cta.fields.variant} onClick={() => { navigate("contact") }}>{cta.fields.text}</Button>}
+                {cta && <Button className="w-fit max-[476px]:w-full" variant={cta.fields.variant} onClick={() => { navigate(ctaSlug) }}>{cta.fields.text}</Button>}
             </div>
         </section >
     );

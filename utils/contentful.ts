@@ -263,6 +263,8 @@ export type CtaSectionSkeleton = {
     background: EntryFieldTypes.AssetLink
     errorMessage: EntryFieldTypes.Symbol
     successMessage: EntryFieldTypes.Symbol
+    telegramBotMessageFallback: EntryFieldTypes.Symbol
+    phoneCodeFallback: EntryFieldTypes.Symbol
   }
 }
 
@@ -291,6 +293,9 @@ export type PageSkeleton = {
   fields: {
     internalName: EntryFieldTypes.Symbol
     slug: EntryFieldTypes.Symbol
+    title: EntryFieldTypes.Symbol
+    description: EntryFieldTypes.Symbol
+    favicon: EntryFieldTypes.AssetLink
     sections: EntryFieldTypes.Array<
       EntryFieldTypes.EntryLink<
         | HeaderSkeleton
