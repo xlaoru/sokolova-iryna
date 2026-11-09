@@ -27,7 +27,7 @@ export default function Sections({ sections }: { sections: Page['fields']['secti
 
         if (section.sys.contentType.sys.id === 'heroSection' && next?.sys.contentType.sys.id === 'factsSection') {
             result.push(
-                <div key={section.sys.id} className="flex flex-col h-[calc(100svh-var(--header-h))] min-h-[600px]">
+                <div key={section.sys.id} className="flex flex-col h-[calc(100svh-var(--header-h))] min-h-[600px] max-[765px]:h-auto">
                     {renderSection(section, ctaSlug)}
                     {renderSection(next, ctaSlug)}
                 </div>
