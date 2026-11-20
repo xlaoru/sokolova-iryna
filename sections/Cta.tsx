@@ -17,7 +17,7 @@ export default function Cta({ entry }: { entry: CtaSectionEntry }) {
     }[status]
     return (
         <section
-            className="full-bleed flex flex-col gap-[48px] py-[128px] items-center bg-cover bg-center bg-no-repeat max-[769px]:px-[16px]"
+            className="full-bleed flex flex-col gap-[48px] py-[128px] items-center bg-cover bg-center bg-no-repeat max-[769px]:px-[16px] max-[769px]:pb-0"
             id={slug}
             style={backgroundUrl ? { backgroundImage: `url(https:${backgroundUrl})` } : undefined}
         >
