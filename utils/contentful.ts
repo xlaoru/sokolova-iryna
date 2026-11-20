@@ -271,22 +271,33 @@ export type CtaSectionSkeleton = {
 export type CtaSectionEntry = Entry<CtaSectionSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
 
 export type FooterItemSkeleton = {
-  contentTypeId: 'footerItem'
+  contentTypeId: 'newFooterItem'
   fields: {
-    internalName: EntryFieldTypes.Symbol
-    texts: EntryFieldTypes.Array<EntryFieldTypes.Symbol>
+    internalName?: EntryFieldTypes.Symbol
+    text?: EntryFieldTypes.Symbol
+    link?: EntryFieldTypes.Symbol
+  }
+}
+
+export type FooterColumnSkeleton = {
+  contentTypeId: 'footerColumn'
+  fields: {
+    internalName?: EntryFieldTypes.Symbol
+    newFooterItem?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<FooterItemSkeleton>>
   }
 }
 
 export type FooterSkeleton = {
   contentTypeId: 'footer'
   fields: {
-    internalName: EntryFieldTypes.Symbol
-    texts: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<FooterItemSkeleton>>
+    internalName?: EntryFieldTypes.Symbol
+    texts?: EntryFieldTypes.Array<EntryFieldTypes.EntryLink<FooterColumnSkeleton | FooterSkeleton>>
   }
 }
 
 export type FooterEntry = Entry<FooterSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
+
+export type FooterColumnEntry = Entry<FooterColumnSkeleton, 'WITHOUT_UNRESOLVABLE_LINKS'>
 
 export type PageSkeleton = {
   contentTypeId: 'page'
